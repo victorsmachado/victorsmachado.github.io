@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Relatórios Integrados (PPU - for your organization)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --gap:16px; --bd:#e5e7eb; --bg:#f5f7fb;
+      --hide-tabs-h:44px; /* altura da barra de páginas a esconder */
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#f5f7fb}
+    header{padding:14px 18px;border-bottom:1px solid var(--bd);background:#fff}
+    h1{margin:0;font-size:18px}
+    .wrap{padding:var(--gap)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+    .card{background:#fff;border:1px solid var(--bd);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-height:520px}
+    .title{padding:10px 12px;border-bottom:1px solid var(--bd);font-weight:600}
+    .frame-wrap{position:relative;flex:1;overflow:hidden}
+    .frame-wrap::before{content:"";display:block;padding-top:56.25%}
+    iframe{
+      position:absolute;inset:0;border:0;width:100%;
+      height:calc(100% + var(--hide-tabs-h));
+      top:calc(-1 * var(--hide-tabs-h));
+      background:#f3f4f6
+    }
+    .mask{position:absolute;left:0;right:0;bottom:0;height:var(--hide-tabs-h);background:#fff;pointer-events:none;box-shadow:0 -1px 0 var(--bd) inset}
+  </style>
+</head>
+<body>
+  <header><h1>Relatórios Integrados</h1></header>
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- CARD 1 -->
+      <div class="card">
+        <div class="title">Card 1 — One Page</div>
+        <div class="frame-wrap">
+          <iframe title="Card 1 — One Page" allowfullscreen
+            src="https://app.powerbi.com/reportEmbed?reportId=eaef244d-e350-4c0f-9144-79270d725380&groupId=73f1c96a-4da7-4e7d-8e08-4b5ce00bbda3&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=a4e55fd610dd3ca070be&bookmarkGuid=85e4f45d0cb0088c3c26">
+          </iframe>
+          <div class="mask"></div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+        <div class="title">Card 2 — ONPAGE - KPI - OTD</div>
+        <div class="frame-wrap">
+          <iframe title="Card 2 — ONPAGE - KPI - OTD" allowfullscreen
+            src="https://app.powerbi.com/reportEmbed?reportId=bd7393d6-0617-4133-8d56-f63b891b9250&groupId=719483f1-b44a-4b5f-9f19-bfa2fe6fd418&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=9e198e86db00aca0c786&bookmarkGuid=BOOKMARK_GUID_2">
+          </iframe>
+          <div class="mask"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
