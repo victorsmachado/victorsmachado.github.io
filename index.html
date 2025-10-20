@@ -6,10 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root{
-      /* largura total do mosaico: 350 + 894 = 1244 */
       --largura-mosaico: 1244px;
-      --altura-mosaico: 1275px;       /* sobra confortável no final */
-      --altura-header: clamp(56px, 7vw, 110px); /* min, preferido (em vw), max */
+      --altura-mosaico: 1275px;       
+      --altura-header: clamp(56px, 7vw, 110px); 
       --escala: calc(100vw / var(--largura-mosaico));
       --fundo: #F2F2F2;
     }
@@ -21,28 +20,23 @@
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     }
 
-    /* cabeçalho (faixa com a arte do título) */
     header.hero{
       margin: 0;
       padding: 0;
       line-height: 0;     
     }
-
     header.hero > img{
       display: block;     
       width: 100%;         
       height: auto;        
     }
 
-    /* canvas que escala o mosaico pra ocupar 100% da largura */
     .fit{
       width:100%;
       height:calc(var(--altura-mosaico) * var(--escala));
       position:relative;
       overflow:hidden;
     }
-
-    /* área base (tamanho “de projeto”) que eu escalo */
     .mosaico{
       position:absolute; inset:0 auto auto 0;
       width:var(--largura-mosaico);
@@ -52,18 +46,14 @@
       background:var(--fundo);
     }
 
-    /* card genérico onde eu encaixo cada iframe do Power BI */
     .card{
-      /* seto por inline: --largura / --altura / --x / --y */
       --largura: 730px;
       --altura: 300px;
       --x: 0px; --y: 0px;
 
-      /* esses 2 só uso quando quero esconder a barrinha do título do BI */
       --offset-top: 0px;
       --offset-bottom: 0px;
 
-      /* sem zoom e sem “empurrar” por padrão */
       --zoom: 1;
       --empurrar: 0px;
 
@@ -71,10 +61,7 @@
       width:var(--largura); height:var(--altura);
       overflow:hidden;
     }
-
     .frame-wrap{ position:relative; width:100%; height:100%; overflow:hidden; }
-
-    /* iframe do BI recortado exatamente no tamanho do card */
     .frame-wrap > iframe{
       position:absolute; inset:0; border:0;
       width:calc(100% / var(--zoom));
@@ -87,72 +74,73 @@
   </style>
 </head>
 <body>
-  <!-- cabeçalho -->
   <header class="hero">
-  <img src="titulo.png" alt="ONE PAGE">
-</header>
+    <img src="titulo.png" alt="ONE PAGE">
+  </header>
 
-  <!-- canvas que escala tudo -->
   <div class="fit">
     <div class="mosaico">
 
-      <!-- Procurement (350x195) - esquerda da 1ª linha -->
-      <div class="card" style="--largura:350px; --altura:195px; --x:0px; --y:0px;">
-        <div class="frame-wrap">
-          <iframe title="Procurement — One Page" allowfullscreen
-            src="https://app.powerbi.com/reportEmbed?reportId=eaef244d-e350-4c0f-9144-79270d725380&groupId=73f1c96a-4da7-4e7d-8e08-4b5ce00bbda3&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=a4e55fd610dd3ca070be&bookmarkGuid=85e4f45d0cb0088c3c26"></iframe>
-        </div>
-      </div>
+      <!-- RH (236 x 274) - topo esquerda -->
+      <div class="card" style="--largura:274px; --altura:236px; --x:0px; --y:0px;">
+  <div class="frame-wrap">
+    <iframe title="RH — One Page" allowfullscreen
+      src="https://app.powerbi.com/reportEmbed?reportId=950205e1-0712-463f-a2f7-7484e89b5124&groupId=73f1c96a-4da7-4e7d-8e08-4b5ce00bbda3&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=13387c078ecad6608203&bookmarkGuid=723183ea359bf80f1fe3&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715">
+    </iframe>
+  </div>
+</div>
 
-      <!-- Planning (894x195) - direita da 1ª linha -->
-      <div class="card" style="--largura:894px; --altura:195px; --x:350px; --y:0px;">
-        <div class="frame-wrap">
-          <iframe title="Planning — One Page" allowfullscreen
-            src="https://app.powerbi.com/reportEmbed?reportId=017e5381-8d75-4020-8acb-71f290cf9d92&groupId=e4bfdbb8-b88c-435e-aa7d-570bc37dcdb1&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=79c5ad90437883eed80e&bookmarkGuid=3bc3c6b9e05db3a70651"></iframe>
-        </div>
-      </div>
+      <!-- Procurement (236 x 212) - topo meio -->
+      <div class="card" style="--largura:212px; --altura:236px; --x:274px; --y:0px;">
+  <div class="frame-wrap">
+    <iframe title="Procurement — One Page" allowfullscreen
+      src="https://app.powerbi.com/reportEmbed?reportId=eaef244d-e350-4c0f-9144-79270d725380&groupId=73f1c96a-4da7-4e7d-8e08-4b5ce00bbda3&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=eaa2a0c8dc8870372343&bookmarkGuid=c6f8998fa7b85d1fa400">
+    </iframe>
+  </div>
+</div>
 
-      <!-- Commercial (1244x560) - 2ª linha inteira -->
-      <div class="card" style="--largura:1244px; --altura:523px; --x:0px; --y:195px;">
-        <div class="frame-wrap">
-          <iframe title="Comercial — One Page" allowfullscreen
-            src="https://app.powerbi.com/reportEmbed?reportId=90e47d96-2852-461b-800f-bccf9f082130&groupId=f61a4daa-731e-4ec1-ab69-ad3eb073bcd2&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=91bfed3d8315852ea4a8&bookmarkGuid=c18eef17c0557581ce03&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715"></iframe>
-        </div>
-      </div>
+      <!-- Planning (236 x 758) - topo direita -->
+      <div class="card" style="--largura:758px; --altura:236px; --x:486px; --y:0px;">
+  <div class="frame-wrap">
+    <iframe title="Planning — One Page" allowfullscreen
+      src="https://app.powerbi.com/reportEmbed?reportId=017e5381-8d75-4020-8acb-71f290cf9d92&groupId=e4bfdbb8-b88c-435e-aa7d-570bc37dcdb1&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=2cf600464329959b2c32&bookmarkGuid=0c4f03b045ed6207c8a7">
+    </iframe>
+  </div>
+</div>
 
-      <!-- Logistic (426x305) - começo da 3ª linha -->
-      <div class="card" style="--largura:426px; --altura:305px; --x:0px; --y:718px;">
+      <!-- Comercial (422 x 1244) - segunda linha inteira -->
+      <div class="card" style="--largura:1244px; --altura:422px; --x:0px; --y:236px;">
+  <div class="frame-wrap">
+    <iframe title="Comercial — One Page" allowfullscreen
+      src="https://app.powerbi.com/reportEmbed?reportId=90e47d96-2852-461b-800f-bccf9f082130&groupId=f61a4daa-731e-4ec1-ab69-ad3eb073bcd2&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=ceaf82db2a40bb4dd089&bookmarkGuid=7e7942e953ac6b80660b">
+    </iframe>
+  </div>
+</div>
+
+      <!-- Logística (305 x 274) - terceira linha esquerda (mesmo bookmark de antes) -->
+      <div class="card" style="--largura:274px; --altura:305px; --x:0px; --y:658px;">
         <div class="frame-wrap">
           <iframe title="Logística — One Page" allowfullscreen
             src="https://app.powerbi.com/reportEmbed?reportId=bd7393d6-0617-4133-8d56-f63b891b9250&groupId=719483f1-b44a-4b5f-9f19-bfa2fe6fd418&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=9e198e86db00aca0c786&bookmarkGuid=2db57260e4aa7a00b0c4&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715"></iframe>
         </div>
       </div>
 
-      <!-- Credit And Collection (818x305) - completa a 3ª linha -->
-      <div class="card" style="--largura:818px; --altura:305px; --x:426px; --y:718px;">
+      <!-- Crédito (305 x 970) - terceira linha direita (mesmo bookmark de antes) -->
+      <div class="card" style="--largura:970px; --altura:305px; --x:274px; --y:658px;">
         <div class="frame-wrap">
           <iframe title="Crédito — One Page" allowfullscreen
             src="https://app.powerbi.com/reportEmbed?reportId=77c9a366-7b15-49b2-9332-cd940bd117a5&groupId=a6dc1940-fef0-469d-88bc-2f3f1308f3aa&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=2a2636ac5d635c003728&bookmarkGuid=f7d26dfc126e4a56d83a&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715"></iframe>
         </div>
       </div>
 
-      <!-- Human Resources (426x248) - completa a 4ª linha -->
-      <div class="card" style="--largura:426px; --altura:248px; --x:0px; --y:1023px;">
-        <div class="frame-wrap">
-          <iframe title="RH — One Page" allowfullscreen
-            src="https://app.powerbi.com/reportEmbed?reportId=950205e1-0712-463f-a2f7-7484e89b5124&groupId=aeb0a4d0-de60-4a9d-9b64-29726677a4a6&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=588824719119c0710695&bookmarkGuid=ea7f93ef40ec5a900a61&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715"></iframe>
-        </div>
-      </div>
-
-      <!-- Financial (818x248) - começo da 4ª linha -->
-      <div class="card" style="--largura:818px; --altura:248px; --x:426px; --y:1023px;">
-        <div class="frame-wrap">
-          <iframe title="Financeiro — One Page" allowfullscreen
-            src="https://app.powerbi.com/reportEmbed?reportId=e847527b-c116-4262-8d07-cbcefa692873&groupId=d5388740-7875-440f-852a-c8e3e8ed06b6&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=5dca7bdb261eacad84ae&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715"></iframe>
-        </div>
-      </div>
-
-      
+      <!-- Financeiro (248 x 1244) - última linha inteira -->
+      <div class="card" style="--largura:1244px; --altura:248px; --x:0px; --y:963px;">
+  <div class="frame-wrap">
+    <iframe title="Financeiro — One Page" allowfullscreen
+      src="https://app.powerbi.com/reportEmbed?reportId=e847527b-c116-4262-8d07-cbcefa692873&groupId=d5388740-7875-440f-852a-c8e3e8ed06b6&ctid=f3ee8880-3296-4093-95d5-e49c4ef98715&rs:embed=true&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=c71ca6a42ed61b456943&bookmarkGuid=57ca5beeb7bc1d2e3f34">
+    </iframe>
+  </div>
+</div>
 
     </div>
   </div>
